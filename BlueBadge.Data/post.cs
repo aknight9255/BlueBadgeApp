@@ -12,9 +12,15 @@ namespace BlueBadge.Data
     {
         [Key]
         public int PostID { get; set; }
+        [Required]
+        public string Title { get; set; }
+
         [ForeignKey("Artist")]
         public int ArtistID { get; set; }
         public virtual Artist Artist { get; set; }
+        [Required]
+        [Display(Name ="Tattoo Details")]
+        public string TattooDetails { get; set; }
 
 
     }

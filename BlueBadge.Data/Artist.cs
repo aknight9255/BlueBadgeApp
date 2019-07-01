@@ -20,6 +20,8 @@ namespace BlueBadge.Data
         public int ShopID { get; set; }
         public virtual Shop Shop { get; set; }
 
+        public string ArtistURL { get; set; }
+
     }
 
 }
