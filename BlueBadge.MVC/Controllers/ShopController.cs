@@ -20,5 +20,17 @@ namespace BlueBadge.MVC.Controllers
         {
             return View();
         }
+
+        //POST CREATE
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create (ShopCreate model)
+        {
+            if(ModelState.IsValid)
+            {
+
+            }
+            return View(model);
+        }
     }
 }
