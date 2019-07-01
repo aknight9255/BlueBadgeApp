@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlueBadge.Data
+namespace BlueBadge.Models
 {
-    public class Shop
+    public class ShopCreate
     {
-        [Key]
-        public int ShopID { get; set; }
         [Required]
+        [MinLength(2, ErrorMessage ="Please enter in a shop name.")]
         public string ShopName { get; set; }
-        public string ShopURL { get; set; }
+        public string ShopUrl { get; set; }
+
     }
 }

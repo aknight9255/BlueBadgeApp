@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace BlueBadge.Models
 {
-    public class Class1
+    public class ShopListItem
     {
+        public int ShopID { get; set; }
+        public string Title { get; set; }
     }
+    
 }
