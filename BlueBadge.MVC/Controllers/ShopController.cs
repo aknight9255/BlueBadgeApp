@@ -86,6 +86,25 @@ namespace BlueBadge.MVC.Controllers
             ModelState.AddModelError("", "This shop could not be updated.");
             return View(model);
         }
+        //GET Delete
+        public ActionResult Delete (int id)
+        {
+            var svc = new ShopService();
+            var model = svc.GetShopByID(id);
+            return View(model);
+        }
+
+        //POST DELETE
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("Delete")]
+        public ActionResult DeletePost(int id)
+        {
+            var service = new ShopService();
+            service.DeleteShop(id);
+            TempData["SaveResult"] = "The shop has been deleted.";
+            return RedirectToAction("Index");
+        }
 
 
     }

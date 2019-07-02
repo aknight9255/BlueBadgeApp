@@ -72,6 +72,17 @@ namespace BlueBadgeServices
             }
         }
 
-        
+        public bool DeleteShop(int shopID)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Shops
+                    .Single(e => e.ShopID == shopID);
+                ctx.Shops.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
