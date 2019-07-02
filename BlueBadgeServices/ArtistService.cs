@@ -41,5 +41,24 @@ namespace BlueBadgeServices
                 return query.ToArray();
             }
         }
+        public ArtistDetails GetArtistByID(int id)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Artists
+                    .Single(e => e.ArtistID == id);
+                return
+                    new ArtistDetails
+                    {
+                        ArtistID = entity.ArtistID,
+                        ArtistName = entity.ArtistName,
+                        PhoneNumber = entity.PhoneNumber,
+                        ShopID = entity.ShopID,
+                        ArtistURL = entity.ArtistURL
+                    };
+            }
+        }
     }
 }

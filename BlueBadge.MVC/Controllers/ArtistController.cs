@@ -25,6 +25,7 @@ namespace BlueBadge.MVC.Controllers
             ViewBag.ShopID = new SelectList(db.GetShops().ToList(), "ShopID", "ShopName");
             return View();
         }
+        //POST CREATE
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create (ArtistCreate model)
@@ -41,6 +42,14 @@ namespace BlueBadge.MVC.Controllers
             ModelState.AddModelError("", "Artist could not be added.");
             return View(model);
 
+        }
+
+        //GET DETAILS
+        public ActionResult Details(int id)
+        {
+            var svc = new ArtistService();
+            var model = svc.GetArtistByID(id);
+            return View(model);
         }
     }
 }

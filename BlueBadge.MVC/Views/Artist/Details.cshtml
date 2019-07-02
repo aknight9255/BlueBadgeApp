@@ -1,0 +1,50 @@
+﻿@model BlueBadge.Models.ArtistDetails
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ArtistDetails</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ArtistName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArtistName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArtistURL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArtistURL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShopID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShopID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ArtistID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
