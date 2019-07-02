@@ -10,16 +10,10 @@ namespace BlueBadgeServices
 {
     public class ShopService
     {
-        private readonly Guid _userID;
-        public ShopService(Guid userID)
-        {
-            _userID = userID;
-        }
         public bool CreateShop(ShopCreate model)
         {
             var entity = new Shop()
-            {
-                OwnerID = _userID,
+            { 
                 ShopName = model.ShopName,
                 ShopURL = model.ShopUrl
             };
@@ -35,19 +29,35 @@ namespace BlueBadgeServices
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
-                   ctx
-                    .Shops
-                    .Where(e => e.OwnerID == _userID)
-                    .Select(
+                   ctx.Shops.Select(
                        e =>
                             new ShopListItem
                             {
                                 ShopID = e.ShopID,
                                 ShopName = e.ShopName
-                            }
-                            );
+                            });
                 return query.ToArray();
             }
         }
+
+        public ShopDetails GetShopByID(int id)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Shops
+                    .Single(e => e.ShopID==id);
+                return
+                    new ShopDetails
+                    {
+                        ShopID = entity.ShopID,
+                        ShopName = entity.ShopName,
+                        ShopUrl = entity.ShopURL
+                    };
+            }
+        }
+
+        
     }
 }

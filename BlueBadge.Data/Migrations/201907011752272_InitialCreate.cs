@@ -40,7 +40,6 @@ namespace BlueBadge.Data.Migrations
                     {
                         ShopID = c.Int(nullable: false, identity: true),
                         ShopName = c.String(nullable: false),
-                        MyProperty = c.Int(nullable: false),
                         ShopURL = c.String(),
                     })
                 .PrimaryKey(t => t.ShopID);

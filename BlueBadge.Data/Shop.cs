@@ -12,8 +12,6 @@ namespace BlueBadge.Data
         [Key]
         public int ShopID { get; set; }
         [Required]
-        public Guid OwnerID { get; set; }
-        [Required]
         public string ShopName { get; set; }
         public string ShopURL { get; set; }
     }
