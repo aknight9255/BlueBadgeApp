@@ -58,6 +58,20 @@ namespace BlueBadgeServices
             }
         }
 
+        public bool UpdateShop(ShopEdit model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Shops
+                    .Single(e => e.ShopID == model.ShopID);
+                entity.ShopName = model.ShopName;
+                entity.ShopURL = model.ShopURL;
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
         
     }
 }

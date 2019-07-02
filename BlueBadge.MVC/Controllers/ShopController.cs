@@ -50,6 +50,41 @@ namespace BlueBadge.MVC.Controllers
             return View(model);
         }
 
+        //Get Edit 
+        public ActionResult Edit(int id)
+        {
+            var service = new ShopService();
+            var detail = service.GetShopByID(id);
+            var model =
+                new ShopEdit
+                {
+                    ShopID = detail.ShopID,
+                    ShopName = detail.ShopName,
+                    ShopURL = detail.ShopUrl
+                };
+            return View(model);
+        }
+
+        //POST EDIT
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, ShopEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+            if(model.ShopID != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+            var service = new ShopService();
+            if (service.UpdateShop(model))
+            {
+                TempData["SavesResult"] = "The shop has been updated.";
+                return RedirectToAction("Index");
+            }
+            ModelState.AddModelError("", "This shop could not be updated.");
+            return View(model);
+        }
 
 
     }

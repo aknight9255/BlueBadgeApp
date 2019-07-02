@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BlueBadge.Models
 {
-    class ShopEdit
+    public class ShopEdit
     {
         public int ShopID { get; set; }
         public string ShopName { get; set; }
