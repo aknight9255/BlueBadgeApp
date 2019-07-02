@@ -71,6 +71,7 @@ namespace BlueBadge.MVC.Controllers
         public ActionResult Edit(int id, ShopEdit model)
         {
             if (!ModelState.IsValid) return View(model);
+
             if(model.ShopID != id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
