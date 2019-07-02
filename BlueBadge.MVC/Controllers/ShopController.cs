@@ -16,9 +16,9 @@ namespace BlueBadge.MVC.Controllers
         // GET: Shop
         public ActionResult Index()
         {
-            List<Shop> shopList = _db.Shops.ToList();
-            List<Shop> orderedShops = shopList.OrderBy(shop => shop.ShopName).ToList();
-            return View(orderedShops);
+            var service = new ShopService();
+            var model = service.GetShops();
+            return View(model);
         }
         //GET CREATE 
         public ActionResult Create()
@@ -40,7 +40,14 @@ namespace BlueBadge.MVC.Controllers
             }
             ModelState.AddModelError("", "Shop could not be added.");
             return View(model);
+        }
 
+        //GET DETAILS
+        public ActionResult Details(int id)
+        {
+            var svc = new ShopService();
+            var model = svc.GetShopByID(id);
+            return View(model);
         }
 
 
