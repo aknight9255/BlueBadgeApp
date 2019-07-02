@@ -72,7 +72,7 @@ namespace BlueBadge.MVC.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-            if(model.ShopID != id)
+            if (model.ShopID != id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);
@@ -87,7 +87,7 @@ namespace BlueBadge.MVC.Controllers
             return View(model);
         }
         //GET Delete
-        public ActionResult Delete (int id)
+        public ActionResult Delete(int id)
         {
             var svc = new ShopService();
             var model = svc.GetShopByID(id);
@@ -105,7 +105,5 @@ namespace BlueBadge.MVC.Controllers
             TempData["SaveResult"] = "The shop has been deleted.";
             return RedirectToAction("Index");
         }
-
-
     }
 }

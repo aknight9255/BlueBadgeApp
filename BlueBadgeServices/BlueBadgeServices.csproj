@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArtistService.cs" />
     <Compile Include="ShopService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

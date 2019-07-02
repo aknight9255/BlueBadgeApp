@@ -32,6 +32,8 @@ namespace BlueBadge.Data
             return new ApplicationDbContext();
         }
         public DbSet<Shop> Shops { get; set; }
+        public DbSet<Artist> Artists { get; set; }
+        public DbSet<Post> Posts { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
@@ -42,6 +44,7 @@ namespace BlueBadge.Data
                 .Add(new IdentityUserLoginConfiguration())
                 .Add(new IdentityUserRoleConfiguration());
         }
+        
     }
     public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
     {

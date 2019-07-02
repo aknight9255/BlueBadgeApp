@@ -64,6 +64,10 @@
     <Compile Include="Migrations\201907021519379_Update-Database.Designer.cs">
       <DependentUpon>201907021519379_Update-Database.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907021940452_Artist.cs" />
+    <Compile Include="Migrations\201907021940452_Artist.Designer.cs">
+      <DependentUpon>201907021940452_Artist.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907021519379_Update-Database.resx">
       <DependentUpon>201907021519379_Update-Database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907021940452_Artist.resx">
+      <DependentUpon>201907021940452_Artist.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
