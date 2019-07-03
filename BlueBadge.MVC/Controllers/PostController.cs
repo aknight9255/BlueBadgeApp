@@ -14,14 +14,18 @@ namespace BlueBadge.MVC.Controllers
         // GET: Post
         public ActionResult Index()
         {
-            var userID = Guid.Parse(User.Identity.GetUserId());
-            var service = new PostService(userID);
+            var service = CreatePostService();
             var model = service.GetPosts();
             return View(model);
         }
+
+
+
         //GET CREATE
-        public ActionResult Create ()
+        public ActionResult Create()
         {
+            var db = new ArtistService();
+            ViewBag.ArtistID = new SelectList(db.GetArtists().ToList(), "ArtistID", "ArtistName");
             return View();
         }
         //POST CREATE
@@ -29,11 +33,26 @@ namespace BlueBadge.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(PostCreate model)
         {
-            if (ModelState.IsValid)
+            var db = new ArtistService();
+            ViewBag.ArtistID = new SelectList(db.GetArtists().ToList(), "ArtistID", "ArtistName");
+            if (!ModelState.IsValid) return View(model);
+            var service = CreatePostService();
+            if (service.CreatePost(model))
             {
-
+                TempData["SaveResult"] = "Your post was created.";
+                return RedirectToAction("Index");
             }
+            ModelState.AddModelError("", "Post could not be created.");
             return View(model);
+        }
+
+
+
+        private PostService CreatePostService()
+        {
+            var userID = Guid.Parse(User.Identity.GetUserId());
+            var service = new PostService(userID);
+            return service;
         }
     }
 }
