@@ -1,4 +1,5 @@
 ﻿using BlueBadge.Models;
+using BlueBadge.Models.Post;
 using BlueBadgeServices;
 using Microsoft.AspNet.Identity;
 using System;
@@ -14,10 +15,10 @@ namespace BlueBadge.MVC.Controllers
         // GET: Post
         public ActionResult Index()
         {
-            var db = new ArtistService();
-            ViewBag.ArtistID = new SelectList(db.GetArtists().ToList(), "ArtistID", "ArtistName");
             var service = CreatePostService();
             var model = service.GetPosts();
+            var db = new ArtistService();
+            ViewBag.ArtistID = new SelectList(db.GetArtists().ToList(), "ArtistID", "ArtistName");
             return View(model);
         }
 
@@ -54,7 +55,68 @@ namespace BlueBadge.MVC.Controllers
             var model = svc.GetPostbyID(id);
             return View(model);
         }
+        //GET EDIT 
+        public ActionResult Edit (int id)
+        {
+            var service = CreatePostService();
+            var detail = service.GetPostbyID(id);
+            var model =
+                new PostEdit
+                {
+                    PostID = detail.PostID,
+                    Title = detail.Title,
+                    ArtistID = detail.ArtistID,
+                    Artist = detail.Artist,
+                    TattooDetails = detail.TattooDetails
+                };
+            var db = new ArtistService();
+            ViewBag.ArtistID = new SelectList(db.GetArtists().ToList(), "ArtistID", "ArtistName", model.ArtistID);
+            return View(model);
+        }
+        //POST EDIT
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, PostEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+            if(model.PostID != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+            var service = CreatePostService();
+            if (service.UpdatePost(model))
+            {
+                TempData["SaveResult"] = "The post was updated.";
+                return RedirectToAction("Index");
+            }
+            ModelState.AddModelError("", "The note could not be updated");
+            var db = new ArtistService();
+            ViewBag.ArtistID = new SelectList(db.GetArtists().ToList(), "ArtistID", "ArtistName",model.ArtistID);
 
+            return View(model);
+        }
+
+        //GET DELETE
+        public ActionResult Delete(int id)
+        {
+            var db = new ArtistService();
+            ViewBag.ArtistID = new SelectList(db.GetArtists().ToList(), "ArtistID", "ArtistName");
+            var svc = CreatePostService();
+            var model = svc.GetPostbyID(id);
+            return View(model);
+        }
+        //POST DELETE
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreatePostService();
+            service.DeletePost(id);
+            TempData["SaveResult"] = "The post has been deleted";
+            return RedirectToAction("Index");
+        }
 
         private PostService CreatePostService()
         {

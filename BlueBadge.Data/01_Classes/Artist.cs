@@ -13,6 +13,7 @@ namespace BlueBadge.Data
         [Key]
         public int ArtistID { get; set; }
         [Required]
+        [Display(Name = "Artist Name")]
         public string ArtistName { get; set; }
         [Required]
         public string PhoneNumber { get; set; }

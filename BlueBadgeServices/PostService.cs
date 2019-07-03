@@ -24,6 +24,7 @@ namespace BlueBadgeServices
                     OwnerID = _userID,
                     Title = model.Title,
                     ArtistID = model.ArtistID,
+                    Artist = model.Artist,
                     TattooDetails = model.TattooDetails
                 };
             using (var ctx = new ApplicationDbContext())
@@ -44,7 +45,9 @@ namespace BlueBadgeServices
                                 new PostListItem
                                 {
                                     PostID = e.PostID,
-                                    Title = e.Title
+                                    Title = e.Title,
+                                    ArtistID = e.ArtistID,
+                                    Artist = e.Artist
                                 });
                 return query.ToArray();
             }
@@ -63,10 +66,34 @@ namespace BlueBadgeServices
                         PostID = entity.PostID,
                         Title = entity.Title,
                         ArtistID = entity.ArtistID,
+                        Artist = entity.Artist,
                         TattooDetails = entity.TattooDetails
                     };
             }
         }
-
+        public bool UpdatePost(PostEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx.Posts.Single
+                    (e => e.PostID == model.PostID && e.OwnerID == _userID);
+                entity.Title = model.Title;
+                entity.ArtistID = model.ArtistID;
+                entity.Artist = model.Artist;
+                entity.TattooDetails = model.TattooDetails;
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool DeletePost(int postID)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Posts.Single
+                    (e => e.PostID == postID && e.OwnerID == _userID);
+                ctx.Posts.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

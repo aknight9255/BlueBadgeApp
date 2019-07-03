@@ -60,6 +60,7 @@
     <Compile Include="Artist\ArtistListItem.cs" />
     <Compile Include="Post\PostCreate.cs" />
     <Compile Include="Post\PostDetail.cs" />
+    <Compile Include="Post\PostEdit.cs" />
     <Compile Include="Post\PostListItem.cs" />
     <Compile Include="Shop\ShopCreate.cs" />
     <Compile Include="Shop\ShopDetails.cs" />
