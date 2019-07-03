@@ -79,10 +79,10 @@ namespace BlueBadgeServices
         {
             using(var ctx = new ApplicationDbContext())
             {
-                var entity = 
-                    ctx 
+                var entity =
+                    ctx
                     .Artists
-                    .Single(e => e.ArtistID == artistID)
+                    .Single(e => e.ArtistID == artistID);
                     ctx.Artists.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }

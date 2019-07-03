@@ -95,5 +95,17 @@ namespace BlueBadge.MVC.Controllers
             var model = svc.GetArtistByID(id);
             return View(model);
         }
+        //POST DELETE
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = new ArtistService();
+            service.DeleteArtist(id);
+            TempData["SaveResult"] = "The artist was deleted";
+            return RedirectToAction("Index");
+        }
+
     }
 }
