@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="ArtistCreate.cs" />
     <Compile Include="ArtistDetails.cs" />
+    <Compile Include="ArtistEdit.cs" />
     <Compile Include="ArtistListItem.cs" />
     <Compile Include="ShopCreate.cs" />
     <Compile Include="ShopDetails.cs" />

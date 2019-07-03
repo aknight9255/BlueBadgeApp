@@ -66,7 +66,27 @@ namespace BlueBadge.MVC.Controllers
                     ShopID = detail.ShopID
                 };
             return View(model);
+        }
+        //POST EDIT 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit (int id, ArtistEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
 
+            if(model.ArtistID != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+            var service = new ArtistService();
+            if (service.UpdateArtist(model))
+            {
+                TempData["SaveResult"] = "The Artist was updated.";
+                return RedirectToAction("Index");
+            }
+            ModelState.AddModelError("", "This Artist could not be updated.");
+            return View(model);
         }
 
     }
