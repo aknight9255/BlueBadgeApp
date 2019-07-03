@@ -1,5 +1,6 @@
 ﻿using BlueBadge.Data;
 using BlueBadge.Models;
+using BlueBadge.Models.Post;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,7 +49,24 @@ namespace BlueBadgeServices
                 return query.ToArray();
             }
         }
-
+        public PostDetail GetPostbyID(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Posts
+                    .Single(e => e.PostID == id && e.OwnerID == _userID);
+                return
+                    new PostDetail
+                    {
+                        PostID = entity.PostID,
+                        Title = entity.Title,
+                        ArtistID = entity.ArtistID,
+                        TattooDetails = entity.TattooDetails
+                    };
+            }
+        }
 
     }
 }

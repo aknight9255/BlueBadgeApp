@@ -25,7 +25,7 @@
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ArtistID)
+            @Html.DisplayNameFor(model => model.Artist.ArtistName)
         </th>
         <th></th>
     </tr>
@@ -37,12 +37,12 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ArtistID)
+                @Html.DisplayFor(modelItem => item.Artist.ArtistName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PostID */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PostID */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PostID */ })
+                @Html.ActionLink("Edit", "Edit", new {  id=item.PostID  }) |
+                @Html.ActionLink("Details", "Details", new { id=item.PostID  }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.PostID  })
             </td>
         </tr>
     }

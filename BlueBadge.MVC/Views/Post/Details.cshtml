@@ -1,0 +1,43 @@
+﻿@model BlueBadge.Models.Post.PostDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PostDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Artist.ArtistName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Artist.ArtistName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TattooDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TattooDetails)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PostID  }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

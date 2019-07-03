@@ -14,12 +14,12 @@ namespace BlueBadge.MVC.Controllers
         // GET: Post
         public ActionResult Index()
         {
+            var db = new ArtistService();
+            ViewBag.ArtistID = new SelectList(db.GetArtists().ToList(), "ArtistID", "ArtistName");
             var service = CreatePostService();
             var model = service.GetPosts();
             return View(model);
         }
-
-
 
         //GET CREATE
         public ActionResult Create()
@@ -45,7 +45,15 @@ namespace BlueBadge.MVC.Controllers
             ModelState.AddModelError("", "Post could not be created.");
             return View(model);
         }
-
+        //GET DETAILS
+        public ActionResult Details(int id)
+        {
+            var db = new ArtistService();
+            ViewBag.ArtistID = new SelectList(db.GetArtists().ToList(), "ArtistID", "ArtistName");
+            var svc = CreatePostService();
+            var model = svc.GetPostbyID(id);
+            return View(model);
+        }
 
 
         private PostService CreatePostService()
