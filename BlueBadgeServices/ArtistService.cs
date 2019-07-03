@@ -60,5 +60,20 @@ namespace BlueBadgeServices
                     };
             }
         }
+        public bool UpdateArtist (ArtistEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx.Artists.Single
+                    (e => e.ArtistID == model.ArtistID);
+                entity.ArtistName = model.ArtistName;
+                entity.PhoneNumber = model.PhoneNumber;
+                entity.ShopID = model.ShopID;
+                entity.ArtistURL = model.ArtistURL;
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
     }
 }

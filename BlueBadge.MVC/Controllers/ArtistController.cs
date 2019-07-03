@@ -51,5 +51,23 @@ namespace BlueBadge.MVC.Controllers
             var model = svc.GetArtistByID(id);
             return View(model);
         }
+        // GET EDIT 
+        public ActionResult Edit(int id)
+        {
+            var service = new ArtistService();
+            var detail = service.GetArtistByID(id);
+            var model =
+                new ArtistEdit
+                {
+                    ArtistID = detail.ArtistID,
+                    ArtistName = detail.ArtistName,
+                    PhoneNumber = detail.PhoneNumber,
+                    ArtistURL = detail.ArtistURL,
+                    ShopID = detail.ShopID
+                };
+            return View(model);
+
+        }
+
     }
 }
