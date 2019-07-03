@@ -65,6 +65,8 @@ namespace BlueBadge.MVC.Controllers
                     ArtistURL = detail.ArtistURL,
                     ShopID = detail.ShopID
                 };
+            var db = new ShopService();
+            ViewBag.ShopID = new SelectList(db.GetShops().ToList(), "ShopID", "ShopName", model.ShopID);
             return View(model);
         }
         //POST EDIT 
@@ -72,6 +74,8 @@ namespace BlueBadge.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit (int id, ArtistEdit model)
         {
+            var db = new ShopService();
+            ViewBag.ShopID = new SelectList(db.GetShops().ToList(), "ShopID", "ShopName",model.ShopID);
             if (!ModelState.IsValid) return View(model);
 
             if(model.ArtistID != id)
@@ -93,6 +97,8 @@ namespace BlueBadge.MVC.Controllers
         {
             var svc = new ArtistService();
             var model = svc.GetArtistByID(id);
+            var db = new ShopService();
+            ViewBag.ShopID = new SelectList(db.GetShops().ToList(), "ShopID", "ShopName", model.ShopID);
             return View(model);
         }
         //POST DELETE

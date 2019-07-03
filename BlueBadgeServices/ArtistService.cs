@@ -18,6 +18,7 @@ namespace BlueBadgeServices
                     ArtistName = model.ArtistName,
                     ArtistURL = model.ArtistURL,
                     ShopID = model.ShopID,
+                    Shop = model.Shop,
                     PhoneNumber = model.PhoneNumber
                 };
             using(var ctx = new ApplicationDbContext())
@@ -56,6 +57,7 @@ namespace BlueBadgeServices
                         ArtistName = entity.ArtistName,
                         PhoneNumber = entity.PhoneNumber,
                         ShopID = entity.ShopID,
+                        Shop = entity.Shop,
                         ArtistURL = entity.ArtistURL
                     };
             }
@@ -70,6 +72,7 @@ namespace BlueBadgeServices
                 entity.ArtistName = model.ArtistName;
                 entity.PhoneNumber = model.PhoneNumber;
                 entity.ShopID = model.ShopID;
+                entity.Shop = model.Shop;
                 entity.ArtistURL = model.ArtistURL;
                 return ctx.SaveChanges() == 1;
             }

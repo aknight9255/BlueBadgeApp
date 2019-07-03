@@ -18,8 +18,8 @@ namespace BlueBadge.Models
         public string PhoneNumber { get; set; }
         [Display(Name = "Artist Website")]
         public string ArtistURL { get; set; }
+
         [ForeignKey("Shop")]
-        [Display(Name = "Shop Location")]
         public int ShopID { get; set; }
         public virtual Shop Shop { get; set; }
 
