@@ -58,6 +58,8 @@
     <Compile Include="ArtistDetails.cs" />
     <Compile Include="ArtistEdit.cs" />
     <Compile Include="ArtistListItem.cs" />
+    <Compile Include="PostCreate.cs" />
+    <Compile Include="PostListItem.cs" />
     <Compile Include="ShopCreate.cs" />
     <Compile Include="ShopDetails.cs" />
     <Compile Include="ShopEdit.cs" />
