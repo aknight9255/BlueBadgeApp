@@ -54,16 +54,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArtistCreate.cs" />
-    <Compile Include="ArtistDetails.cs" />
-    <Compile Include="ArtistEdit.cs" />
-    <Compile Include="ArtistListItem.cs" />
-    <Compile Include="PostCreate.cs" />
-    <Compile Include="PostListItem.cs" />
-    <Compile Include="ShopCreate.cs" />
-    <Compile Include="ShopDetails.cs" />
-    <Compile Include="ShopEdit.cs" />
-    <Compile Include="ShopListItem.cs" />
+    <Compile Include="Artist\ArtistCreate.cs" />
+    <Compile Include="Artist\ArtistDetails.cs" />
+    <Compile Include="Artist\ArtistEdit.cs" />
+    <Compile Include="Artist\ArtistListItem.cs" />
+    <Compile Include="Post\PostCreate.cs" />
+    <Compile Include="Post\PostListItem.cs" />
+    <Compile Include="Shop\ShopCreate.cs" />
+    <Compile Include="Shop\ShopDetails.cs" />
+    <Compile Include="Shop\ShopEdit.cs" />
+    <Compile Include="Shop\ShopListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -54,7 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Artist.cs" />
+    <Compile Include="01_Classes\Artist.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Migrations\201907011752272_InitialCreate.cs" />
     <Compile Include="Migrations\201907011752272_InitialCreate.Designer.cs">
@@ -73,9 +73,9 @@
       <DependentUpon>201907031417545_Post update.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Post.cs" />
+    <Compile Include="01_Classes\Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Shop.cs" />
+    <Compile Include="01_Classes\Shop.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
