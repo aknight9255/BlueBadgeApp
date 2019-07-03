@@ -75,5 +75,17 @@ namespace BlueBadgeServices
             }
         }
 
+        public bool DeleteArtist(int artistID)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity = 
+                    ctx 
+                    .Artists
+                    .Single(e => e.ArtistID == artistID)
+                    ctx.Artists.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

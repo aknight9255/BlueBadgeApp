@@ -88,6 +88,12 @@ namespace BlueBadge.MVC.Controllers
             ModelState.AddModelError("", "This Artist could not be updated.");
             return View(model);
         }
-
+        //GET Delete
+        public ActionResult Delete(int id)
+        {
+            var svc = new ArtistService();
+            var model = svc.GetArtistByID(id);
+            return View(model);
+        }
     }
 }
