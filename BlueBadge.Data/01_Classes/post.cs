@@ -25,6 +25,5 @@ namespace BlueBadge.Data
         [Display(Name ="Tattoo Details")]
         public string TattooDetails { get; set; }
 
-
     }
 }
