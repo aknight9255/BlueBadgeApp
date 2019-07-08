@@ -7,13 +7,13 @@ namespace BlueBadge.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class Postupdate : IMigrationMetadata
+    public sealed partial class initialafterdrop : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Postupdate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initialafterdrop));
         
         string IMigrationMetadata.Id
         {
-            get { return "201907031417545_Post update"; }
+            get { return "201907081906276_initialafterdrop"; }
         }
         
         string IMigrationMetadata.Source

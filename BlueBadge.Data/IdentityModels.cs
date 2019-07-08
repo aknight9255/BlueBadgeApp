@@ -34,6 +34,8 @@ namespace BlueBadge.Data
         public DbSet<Shop> Shops { get; set; }
         public DbSet<Artist> Artists { get; set; }
         public DbSet<Post> Posts { get; set; }
+        public DbSet<Photo> Photos { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder

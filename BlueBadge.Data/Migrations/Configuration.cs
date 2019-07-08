@@ -10,7 +10,6 @@ namespace BlueBadge.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "BlueBadge.Data.ApplicationDbContext";
         }
 
         protected override void Seed(BlueBadge.Data.ApplicationDbContext context)

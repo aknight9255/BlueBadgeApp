@@ -46,6 +46,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,25 +56,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="01_Classes\Artist.cs" />
+    <Compile Include="01_Classes\Photo.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\201907011752272_InitialCreate.cs" />
-    <Compile Include="Migrations\201907011752272_InitialCreate.Designer.cs">
-      <DependentUpon>201907011752272_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907021519379_Update-Database.cs" />
-    <Compile Include="Migrations\201907021519379_Update-Database.Designer.cs">
-      <DependentUpon>201907021519379_Update-Database.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907021940452_Artist.cs" />
-    <Compile Include="Migrations\201907021940452_Artist.Designer.cs">
-      <DependentUpon>201907021940452_Artist.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907031417545_Post update.cs" />
-    <Compile Include="Migrations\201907031417545_Post update.Designer.cs">
-      <DependentUpon>201907031417545_Post update.cs</DependentUpon>
+    <Compile Include="01_Classes\Post.cs" />
+    <Compile Include="Migrations\201907081906276_initialafterdrop.cs" />
+    <Compile Include="Migrations\201907081906276_initialafterdrop.Designer.cs">
+      <DependentUpon>201907081906276_initialafterdrop.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="01_Classes\Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="01_Classes\Shop.cs" />
   </ItemGroup>
@@ -82,17 +72,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201907011752272_InitialCreate.resx">
-      <DependentUpon>201907011752272_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907021519379_Update-Database.resx">
-      <DependentUpon>201907021519379_Update-Database.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907021940452_Artist.resx">
-      <DependentUpon>201907021940452_Artist.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907031417545_Post update.resx">
-      <DependentUpon>201907031417545_Post update.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907081906276_initialafterdrop.resx">
+      <DependentUpon>201907081906276_initialafterdrop.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

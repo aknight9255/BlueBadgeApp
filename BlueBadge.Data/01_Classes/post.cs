@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace BlueBadge.Data
 {
@@ -25,5 +26,10 @@ namespace BlueBadge.Data
         [Display(Name ="Tattoo Details")]
         public string TattooDetails { get; set; }
 
+        [NotMapped]
+        public HttpPostedFileBase Upload { get; set; }
+        //[ForeignKey("File")]
+        //public int FileId { get; set; }
+        public virtual ICollection<Photo> Files { get; set; }
     }
 }

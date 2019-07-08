@@ -18,6 +18,21 @@ namespace BlueBadgeServices
         }
         public bool CreatePost(PostCreate model)
         {
+            //var upload = new PostCreate().Upload;
+            if (model.Upload != null && model.Upload.ContentLength > 0)
+            {
+                var avatar = new Photo
+                {
+                    PhotoName = System.IO.Path.GetFileName(model.Upload.FileName),
+                    FileType = FileType.Picture,
+                    ContentType = model.Upload.ContentType
+                };
+                using (var reader = new System.IO.BinaryReader(model.Upload.InputStream))
+                {
+                    avatar.Content = reader.ReadBytes(model.Upload.ContentLength);
+                }
+                model.Files = new List<Photo> { avatar };
+            }
             var entity =
                 new Post()
                 {
@@ -25,7 +40,9 @@ namespace BlueBadgeServices
                     Title = model.Title,
                     ArtistID = model.ArtistID,
                     Artist = model.Artist,
-                    TattooDetails = model.TattooDetails
+                    TattooDetails = model.TattooDetails,
+                    Files = model.Files,
+                    Upload = model.Upload,
                 };
             using (var ctx = new ApplicationDbContext())
             {
