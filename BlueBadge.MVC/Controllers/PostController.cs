@@ -67,7 +67,8 @@ namespace BlueBadge.MVC.Controllers
                     Title = detail.Title,
                     ArtistID = detail.ArtistID,
                     Artist = detail.Artist,
-                    TattooDetails = detail.TattooDetails
+                    TattooDetails = detail.TattooDetails,
+                    Files = detail.Files
                 };
             var db = new ArtistService();
             ViewBag.ArtistID = new SelectList(db.GetArtists().ToList(), "ArtistID", "ArtistName", model.ArtistID);

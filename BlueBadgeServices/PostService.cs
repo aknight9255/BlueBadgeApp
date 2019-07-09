@@ -88,21 +88,41 @@ namespace BlueBadgeServices
                         TattooDetails = entity.TattooDetails,
                         Files = entity.Files,
                     };
-                
+
             }
         }
         public bool UpdatePost(PostEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
+                if (model.Upload != null && model.Upload.ContentLength > 0)
+                {
+                    if (model.Files.Any(f => f.FileType == FileType.Picture))
+                    {
+                        ctx.Photos.Remove(model.Files.First(f => f.FileType == BlueBadge.Data.FileType.Picture));
+                    }
+                    var avatar = new Photo
+                    {
+                        PhotoName = System.IO.Path.GetFileName(model.Upload.FileName),
+                        FileType = FileType.Picture,
+                        ContentType = model.Upload.ContentType
+                    };
+                    using (var reader = new System.IO.BinaryReader(model.Upload.InputStream))
+                    {
+                        avatar.Content = reader.ReadBytes(model.Upload.ContentLength);
+                    }
+                    model.Files = new List<Photo> { avatar };
+                }
                 var entity =
-                    ctx.Posts.Single
-                    (e => e.PostID == model.PostID && e.OwnerID == _userID);
+                ctx.Posts.Single
+                (e => e.PostID == model.PostID && e.OwnerID == _userID);
                 entity.Title = model.Title;
                 entity.ArtistID = model.ArtistID;
                 entity.Artist = model.Artist;
                 entity.TattooDetails = model.TattooDetails;
-                return ctx.SaveChanges() == 1;
+                entity.Files = model.Files;
+                entity.Upload = model.Upload;
+                return ctx.SaveChanges() >= 1;
             }
         }
         public bool DeletePost(int postID)
