@@ -28,8 +28,6 @@ namespace BlueBadge.Data
 
         [NotMapped]
         public HttpPostedFileBase Upload { get; set; }
-        //[ForeignKey("File")]
-        //public int FileId { get; set; }
         public virtual ICollection<Photo> Files { get; set; }
     }
 }

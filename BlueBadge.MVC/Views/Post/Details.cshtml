@@ -10,6 +10,17 @@
     <h4>PostDetail</h4>
     <hr />
     <dl class="dl-horizontal">
+        @if (Model.Files.Any(ff => ff.FileType == BlueBadge.Data.FileType.Picture))
+        {
+            <dt>
+                Tattoo Photo
+            </dt>
+            <dd>
+                <img src="~/File?id=@Model.Files.First(f => f.FileType == BlueBadge.Data.FileType.Picture).PhotoId" alt="avatar" />
+            </dd>
+        }
+
+
 
         <dt>
             @Html.DisplayNameFor(model => model.Title)
@@ -38,6 +49,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PostID  }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PostID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

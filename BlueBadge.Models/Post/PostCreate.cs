@@ -26,8 +26,8 @@ namespace BlueBadge.Models
         public string TattooDetails { get; set; }
         [NotMapped]
         public HttpPostedFileBase Upload { get; set; }
-        [ForeignKey("File")]
-        public int FileId { get; set; }
+        [ForeignKey("Photo")]
+        public int PhotoId { get; set; }
         public virtual ICollection<Photo> Files { get; set; }
     }
 }

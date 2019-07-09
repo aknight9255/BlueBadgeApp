@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace BlueBadgeServices
 {
@@ -18,7 +19,6 @@ namespace BlueBadgeServices
         }
         public bool CreatePost(PostCreate model)
         {
-            //var upload = new PostCreate().Upload;
             if (model.Upload != null && model.Upload.ContentLength > 0)
             {
                 var avatar = new Photo
@@ -47,7 +47,8 @@ namespace BlueBadgeServices
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Posts.Add(entity);
-                return ctx.SaveChanges() == 1;
+                int actual = ctx.SaveChanges();
+                return actual >= 1;
             }
         }
         public IEnumerable<PostListItem> GetPosts()
@@ -84,8 +85,10 @@ namespace BlueBadgeServices
                         Title = entity.Title,
                         ArtistID = entity.ArtistID,
                         Artist = entity.Artist,
-                        TattooDetails = entity.TattooDetails
+                        TattooDetails = entity.TattooDetails,
+                        Files = entity.Files,
                     };
+                
             }
         }
         public bool UpdatePost(PostEdit model)

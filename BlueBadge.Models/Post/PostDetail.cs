@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace BlueBadge.Models.Post
 {
@@ -23,5 +24,8 @@ namespace BlueBadge.Models.Post
         [Required]
         [Display(Name = "Tattoo Details")]
         public string TattooDetails { get; set; }
+        [ForeignKey("Photo")]
+        public int PhotoId { get; set; }
+        public virtual ICollection<Photo> Files { get; set; }
     }
 }
