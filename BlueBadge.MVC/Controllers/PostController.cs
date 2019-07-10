@@ -64,11 +64,11 @@ namespace BlueBadge.MVC.Controllers
                 new PostEdit
                 {
                     PostID = detail.PostID,
+                    PhotoId = detail.PhotoId,
                     Title = detail.Title,
                     ArtistID = detail.ArtistID,
-                    Artist = detail.Artist,
                     TattooDetails = detail.TattooDetails,
-                    Files = detail.Files
+                    Files = detail.Files,
                 };
             var db = new ArtistService();
             ViewBag.ArtistID = new SelectList(db.GetArtists().ToList(), "ArtistID", "ArtistName", model.ArtistID);
@@ -79,13 +79,23 @@ namespace BlueBadge.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, PostEdit model)
         {
+            var service = CreatePostService();
+            var detail = service.GetPostbyID(id);
+            var modelPrevious =
+                new PostEdit
+                {
+                    Files = detail.Files,
+                };
+
+            model.Files = modelPrevious.Files;
+
             if (!ModelState.IsValid) return View(model);
             if(model.PostID != id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);
             }
-            var service = CreatePostService();
+
             if (service.UpdatePost(model))
             {
                 TempData["SaveResult"] = "The post was updated.";

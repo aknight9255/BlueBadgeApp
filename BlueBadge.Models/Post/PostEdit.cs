@@ -17,7 +17,6 @@ namespace BlueBadge.Models.Post
         [ForeignKey("Artist")]
         [Display(Name = "Artist")]
         public int ArtistID { get; set; }
-        public virtual Artist Artist { get; set; }
         [Display(Name = "Tattoo Details")]
         [MaxLength(8000)]
         public string TattooDetails { get; set; }

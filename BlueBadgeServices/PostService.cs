@@ -77,6 +77,7 @@ namespace BlueBadgeServices
                 var entity =
                     ctx
                     .Posts
+                    .Include(e => e.Files)
                     .Single(e => e.PostID == id && e.OwnerID == _userID);
                 return
                     new PostDetail
@@ -87,6 +88,7 @@ namespace BlueBadgeServices
                         Artist = entity.Artist,
                         TattooDetails = entity.TattooDetails,
                         Files = entity.Files,
+                        PhotoId = entity.Files.ToList()[0].PhotoId
                     };
 
             }
@@ -99,7 +101,10 @@ namespace BlueBadgeServices
                 {
                     if (model.Files.Any(f => f.FileType == FileType.Picture))
                     {
-                        ctx.Photos.Remove(model.Files.First(f => f.FileType == BlueBadge.Data.FileType.Picture));
+                        /*ctx.Photos.Remove(model.Files.First(f => f.FileType == BlueBadge.Data.FileType.Picture));*/
+                        var previousFile = ctx.Photos.Single(pF => pF.PhotoId == model.PhotoId);
+                        ctx.Photos.Remove(previousFile);
+                        
                     }
                     var avatar = new Photo
                     {
@@ -118,7 +123,6 @@ namespace BlueBadgeServices
                 (e => e.PostID == model.PostID && e.OwnerID == _userID);
                 entity.Title = model.Title;
                 entity.ArtistID = model.ArtistID;
-                entity.Artist = model.Artist;
                 entity.TattooDetails = model.TattooDetails;
                 entity.Files = model.Files;
                 entity.Upload = model.Upload;

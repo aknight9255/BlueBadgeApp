@@ -24,6 +24,8 @@ namespace BlueBadge.Models.Post
         [Required]
         [Display(Name = "Tattoo Details")]
         public string TattooDetails { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase Upload { get; set; }
         [ForeignKey("Photo")]
         public int PhotoId { get; set; }
         public virtual ICollection<Photo> Files { get; set; }
