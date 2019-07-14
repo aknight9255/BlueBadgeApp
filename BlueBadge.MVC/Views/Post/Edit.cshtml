@@ -50,7 +50,7 @@
         @if (Model.Files.Any(f => f.FileType == BlueBadge.Data.FileType.Picture))
         {
             <div class="form-group">
-                <span class="control-label col-md-2"><strong>Current Avatar</strong></span>
+                <span class="control-label col-md-2"><strong>Tattoo Picture</strong></span>
                 <div class="col-md-10">
                     <img src="~/File?id=@Model.Files.First(f => f.FileType == BlueBadge.Data.FileType.Picture).PhotoId" />
                 </div>

@@ -90,7 +90,6 @@ namespace BlueBadgeServices
                         Files = entity.Files,
                         PhotoId = entity.Files.ToList()[0].PhotoId
                     };
-
             }
         }
         public bool UpdatePost(PostEdit model)
@@ -104,7 +103,6 @@ namespace BlueBadgeServices
                         /*ctx.Photos.Remove(model.Files.First(f => f.FileType == BlueBadge.Data.FileType.Picture));*/
                         var previousFile = ctx.Photos.Single(pF => pF.PhotoId == model.PhotoId);
                         ctx.Photos.Remove(previousFile);
-                        
                     }
                     var avatar = new Photo
                     {
