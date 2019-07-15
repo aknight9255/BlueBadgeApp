@@ -1,33 +1,63 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-    <div class="jumbotron">
-        <h1>Welcome to TatTrack!</h1>
-        <p>Register to start tracking your tattoos!</p>
-    </div>
+<div class="jumbotron" style="background-image: url(../../Content/assets/homepageTitle2.jpg); background-size:auto;">
+    <h1 style="color: #076776; text-align:center; padding: .5em 1em 2em 1em;">Welcome to TatTrack!</h1>
+    @if (Request.IsAuthenticated)
+    {
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutform" }))
+        {
+            @Html.AntiForgeryToken()
 
-    <h2>History of Tattoos</h2>
+            <p style="text-align: right">
+                <a href="javascript:document.getElementById('logoutForm').submit()" style="border: solid #5EA6B4; padding: .5em; border-radius: 10%; color:whitesmoke; background-color:#5EA6B4;">Log off</a>
+            </p>
 
-    <div class="card-deck">
-
-        <div class="card">
-            <img src="https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjjz72o1a3jAhVJCs0KHXIKD78QjRx6BAgBEAU&url=http%3A%2F%2Fwww.clker.com%2Fclipart-navy-umbrella-clipart.html&psig=AOvVaw0bfPrmnkeY5Ek1PIH0vsi5&ust=1562961993114561" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Authority Tattoo</h5>
-                <p class="card-text">"This article by Dan Hunter goes through the timeline of what is know of the history of tattoos up to present day. Also offers photos throughout."</p>
+        }
+    }
+    else
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col" style="text-align:center">
+                    @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-info" })
+                </div>
+                <div class="col" style="text-align:center">
+                    @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-info" })
+                </div>
             </div>
         </div>
+    }
+</div>
 
-        <div class="card">
-            <img src="https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjjz72o1a3jAhVJCs0KHXIKD78QjRx6BAgBEAU&url=http%3A%2F%2Fwww.clker.com%2Fclipart-navy-umbrella-clipart.html&psig=AOvVaw0bfPrmnkeY5Ek1PIH0vsi5&ust=1562961993114561" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Wikipedia</h5>
-                <p class="card-text">"This will offer a more in depth look into the history."</p>
-            </div>
+
+<h2 style="text-align:center;">History of Tattoos</h2>
+
+<div class="card-deck">
+
+
+    <div class="card">
+        <img src="https://cdn.pixabay.com/photo/2018/03/28/11/51/tattoo-3268988_960_720.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <p class="card-text" style="color:#076776;">Want a fun article that walks you through the history of tattoos? Click the learn more button below to read an article by Dan Hunter, who has been researching the subject for over 10 years. The article covers what is known of the earliest tattoos up to current with helpful and informative pictures along the way. </p>
         </div>
-
+        <div class="card-footer">
+            <p><a href="https://authoritytattoo.com/history-of-tattoos/" class="btn btn-primary" role="button">Learn More</a></p>
+        </div>
     </div>
 
+
+    <div class="card">
+        <img src="https://i.pinimg.com/originals/71/81/15/71811511ee894b3eb2ad35ae3a5d380e.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <p class="card-text" style="color:#076776;">Don't want to read an article but still curious about the history of tattoos? Click learn more below and watch a 5 minute video about it courtesy of TED-Ed. Since this is also going to take you to youtube there are several videos that you can get caught up watching to satisfy your curiosity. </p>
+        </div>
+        <div class="card-footer">
+            <p><a href="https://youtu.be/MYn15yDBvxM" class="btn btn-primary" role="button">Learn More</a></p>
+        </div>
+    </div>
+
+</div>
 
 
 

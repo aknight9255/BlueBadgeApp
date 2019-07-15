@@ -1,0 +1,25 @@
+﻿@model BlueBadge.Models.PostCreate
+
+@{ ViewBag.Title = "MAIN";}
+    
+
+
+<h2>Please Choose From Below Options</h2>
+
+<div class="card-deck">
+
+    <div class="card">
+        <div class="card-body">
+            <h5>Add post with existing Artist</h5>
+            <p>@Html.ActionLink("Create New", "Create")</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h5>Add post with new Artist</h5>
+            <p>@Html.ActionLink("Create New", "Create", "Shop")</p>
+        </div>
+    </div>
+
+</div>
