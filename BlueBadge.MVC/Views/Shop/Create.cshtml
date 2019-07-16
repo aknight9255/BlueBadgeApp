@@ -4,47 +4,67 @@
     ViewBag.Title = "Create";
 }
 
-<h2>First we will start with adding the shop the Artist belongs to</h2>
-<h3>If the artist does not belong to a shop please choose the freelance option</h3>
-<h3>If you are adding a new artist but the shop already exists please click "skip to artist details". </h3>
+<h1 style="text-align:center;">What shop did you visit?</h1>
 
-
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Add New Shop</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.ShopName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ShopName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ShopName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ShopUrl, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ShopUrl, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ShopUrl, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Add New Shop" class="btn btn-default" />
-            </div>
-        </div>
+<div class="card">
+    <div class="card-header" style="color:#076776;">
+        <p>Instructions</p>
+        <ul>
+            <li>First we will start with adding the shop the Artist belongs to in the fields below.</li>
+            <li>Artist doesn't belong to a shop or you have already added this shop? Click the "Jump to Add Artist Screen" below" to continue.</li>
+        </ul>
     </div>
-}
 
-<div>
-    @Html.ActionLink("skip to artist details", "Create", "Artist")
-    @Html.ActionLink("Back to Upload Options", "Main", "Post")
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal" style="color: #076776;">
+                <h4>Add New Shop</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShopName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ShopName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ShopName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" style="color: #076776;">
+                    @Html.LabelFor(model => model.ShopUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ShopUrl, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ShopUrl, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Add New Shop" class="btn btn-secondary" />
+                    </div>
+                </div>
+            </div>
+        }
+
+        <footer class="card-footer text-muted" style="text-align:right;">
+            <div>
+                @Html.ActionLink("Jump to Add Artist Screen", "Create", "Artist", routeValues: null, htmlAttributes: new { @class = "btn btn-outline-info" }) |
+                @Html.ActionLink("Return to Upload Options", "Main", "Post", routeValues: null, htmlAttributes: new { @class = "btn btn-outline-info" })
+            </div>
+        </footer>
+
+    </div>
+
 </div>
+<style>
+
+     h4 {
+        color: #076776;
+    }
+
+</style>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

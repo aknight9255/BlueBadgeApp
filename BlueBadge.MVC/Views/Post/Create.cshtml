@@ -4,62 +4,148 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
 
+<h1 style="text-align:center;">Tell us about your tattoo!</h1>
 
-@using (Html.BeginForm("Create", "Post", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>PostCreate</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ArtistID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ArtistID", null, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ArtistID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.TattooDetails, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TattooDetails, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TattooDetails, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.Label("Picture", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="file" id="PostPic" name="upload" />
-            </div>
-        </div>
-
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
+<div class="card">
+    <div class="card-header" style="color:#076776;">
+        <p>Instructions</p>
+        <ul>
+            <li>Under title name your tattoo! Choose something that you will remember as this is what will show in your list of tattoos.</li>
+            <li> You are able to add a picture from your device but it is not required to add your tattoo. You can also add one later on. </li>
+        </ul>
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal" style="color: #076776;">
+                <h4>Add New Tattoo</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ArtistID, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("ArtistID", null, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ArtistID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TattooDetails, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TattooDetails, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TattooDetails, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Picture", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="file" id="PostPic" name="upload" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Add New Tattoo" class="btn btn-secondary" />
+                    </div>
+                </div>
+            </div>
+        }
+        <footer class="card-footer text-muted" style="text-align:right;">
+            <div>
+                @Html.ActionLink("Back to List", "Index", "Post", routeValues: null, htmlAttributes: new { @class = "btn btn-outline-info" }) |
+                @Html.ActionLink("Return to Upload Options", "Main", "Post", routeValues: null, htmlAttributes: new { @class = "btn btn-outline-info" })
+            </div>
+        </footer>
+
+    </div>
+
 </div>
+<style>
+
+    h4 {
+        color: #076776;
+    }
+</style>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+
+
+
+
+
+@*<h2>Create</h2>
+
+
+    @using (Html.BeginForm("Create", "Post", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>PostCreate</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ArtistID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ArtistID", null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ArtistID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TattooDetails, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TattooDetails, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TattooDetails, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Picture", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" id="PostPic" name="upload" />
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Return to Upload Options", "MAIN")
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@

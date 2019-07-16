@@ -1,21 +1,28 @@
 ﻿@{ ViewBag.Title = "MAIN";}
     
-<h2>Please Choose From Below Options</h2>
+<h2 style="text-align:center;">Congrats on the new tattoo!</h2>
 
-<div class="card-deck">
+<div class="card-deck" style="text-align:center;">
 
     <div class="card">
+        <img src="~/Content/assets/TAT1.jpg" class="card-img-top"/>
         <div class="card-body">
-            <h5>Add post with existing Artist</h5>
-            <p>@Html.ActionLink("Create New", "Create")</p>
+            <h5>Choose this option if you have already added a tattoo from the artist already. </h5>
+            <p>@Html.ActionLink("Begin TatTrack", "Create", routeValues: null, htmlAttributes: new { @class = "btn btn-outline-info" })</p>
         </div>
     </div>
 
     <div class="card">
+        <img src="~/Content/assets/TAT2.jpg" class="card-img-top" />
         <div class="card-body">
-            <h5>Add post with new Artist</h5>
-            <p>@Html.ActionLink("Create New", "Create", "Shop")</p>
+            <h5>Choose this option if this is the first tattoo on your profile or a tattoo from a new artist. </h5>
+            <p>@Html.ActionLink("Begin TatTrack", "Create", "Shop", routeValues: null, htmlAttributes: new { @class = "btn btn-outline-info" })</p>
         </div>
     </div>
 
 </div>
+<style>
+    h5 {
+        color: #076776;
+    }
+</style>
