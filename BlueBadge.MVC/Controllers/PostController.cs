@@ -129,6 +129,12 @@ namespace BlueBadge.MVC.Controllers
             return RedirectToAction("Index");
         }
 
+        //GET MAIN 
+        public ActionResult MAIN()
+        {
+            return View();
+        }
+
         private PostService CreatePostService()
         {
             var userID = Guid.Parse(User.Identity.GetUserId());

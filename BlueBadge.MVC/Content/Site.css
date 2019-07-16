@@ -1,4 +1,7 @@
-﻿/* Set padding to keep content from hitting the edges */
+﻿body {
+    margin:5% 5%;
+}
+/* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 10px;
     padding-right: 10px;
@@ -16,7 +19,4 @@ input,
 select,
 textarea {
     max-width: 280px;
-}
- .navbar-light li {
-    color: rebeccapurple;
 }

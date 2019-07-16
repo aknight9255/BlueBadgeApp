@@ -37,7 +37,7 @@ namespace BlueBadge.MVC.Controllers
             if (service.CreateArtist(model))
             {
                 TempData["SaveResult"] = "Artist added.";
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "Post");
             }
             ModelState.AddModelError("", "Artist could not be added.");
             return View(model);

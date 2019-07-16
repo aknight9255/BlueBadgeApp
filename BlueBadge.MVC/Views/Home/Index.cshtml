@@ -1,21 +1,10 @@
-﻿@{
+﻿@using Microsoft.AspNet.Identity
+@{
     ViewBag.Title = "Home Page";
 }
-<div class="jumbotron" style="background-image: url(../../Content/assets/homepageTitle2.jpg); background-size:auto;">
+<div class="jumbotron" style="background-image: url(../../Content/assets/homepageTitle2.jpg); background-size:auto; margin: 6% 2%;">
     <h1 style="color: #076776; text-align:center; padding: .5em 1em 2em 1em;">Welcome to TatTrack!</h1>
-    @if (Request.IsAuthenticated)
-    {
-        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutform" }))
-        {
-            @Html.AntiForgeryToken()
-
-            <p style="text-align: right">
-                <a href="javascript:document.getElementById('logoutForm').submit()" style="border: solid #5EA6B4; padding: .5em; border-radius: 10%; color:whitesmoke; background-color:#5EA6B4;">Log off</a>
-            </p>
-
-        }
-    }
-    else
+    @if (!Request.IsAuthenticated)
     {
         <div class="container">
             <div class="row">
@@ -39,7 +28,10 @@
     <div class="card">
         <img src="https://cdn.pixabay.com/photo/2018/03/28/11/51/tattoo-3268988_960_720.jpg" class="card-img-top" alt="...">
         <div class="card-body">
-            <p class="card-text" style="color:#076776;">Want a fun article that walks you through the history of tattoos? Click the learn more button below to read an article by Dan Hunter, who has been researching the subject for over 10 years. The article covers what is known of the earliest tattoos up to current with helpful and informative pictures along the way. </p>
+            <p class="card-text" style="color:#076776;">
+                Click the learn more button below to read an article by Dan Hunter, who has been researching the subject for over 10 years.
+                The article covers both ancient and modern techniques along with cultural significance and includes helpful and informative pictures along the way.
+            </p>
         </div>
         <div class="card-footer">
             <p><a href="https://authoritytattoo.com/history-of-tattoos/" class="btn btn-primary" role="button">Learn More</a></p>

@@ -3,24 +3,31 @@
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            <a @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })> </a>
-        </li>
-        <li>
-            <p><a href="javascript:document.getElementById('logoutForm').submit()" role="button">Log Off</a></p>
-        </li>
-    </ul>
+        <nav class="nav navbar-nav navbar-right">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <nav class="nav-item">
+                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                </nav>
+                <nav class="nav-item">
+                    <nav class="nav-link">
+                        <a href="javascript:document.getElementById('logoutForm').submit()" role="button"> Log Off</a>
+                    </nav>
+                </nav>
+
+
+            </div>
+        </nav>
     }
 }
-else
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-        <a @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn btn-outline-info" })> </a> </li>
-        <li>
-        <a @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" , @class = "btn btn-outline-info" })> </a> </li>
-    </ul>
-}
+<style>
+    .Manage {
+        color: #076776;
+    }
+
+    a {
+        color: #076776;
+    }
+</style>
+

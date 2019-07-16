@@ -5,50 +5,63 @@
 }
 
 <h2>Details</h2>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            @if (Model.Files.Any(ff => ff.FileType == BlueBadge.Data.FileType.Picture))
+            {
+                <h4>
+                    Tattoo Photo
+                </h4>
+                <p>
+                    <img src="~/File?id=@Model.Files.First(f => f.FileType == BlueBadge.Data.FileType.Picture).PhotoId" alt="avatar" />
+                </p>
+            }
+        </div>
 
-<div>
-    <h4>PostDetail</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        @if (Model.Files.Any(ff => ff.FileType == BlueBadge.Data.FileType.Picture))
-        {
-            <dt>
-                Tattoo Photo
-            </dt>
-            <dd>
-                <img src="~/File?id=@Model.Files.First(f => f.FileType == BlueBadge.Data.FileType.Picture).PhotoId" alt="avatar" />
-            </dd>
-        }
+        <div class="col">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Title)
+                </dt>
 
+                <dd>
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
 
+                <dt>
+                    @Html.DisplayNameFor(model => model.Artist.ArtistName)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Artist.ArtistName)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.TattooDetails)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Artist.ArtistName)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.TattooDetails)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Artist.ArtistName)
-        </dd>
+            </dl>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TattooDetails)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TattooDetails)
-        </dd>
-
-    </dl>
+    </div>
 </div>
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.PostID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+<style>
+    img {
+        max-height: 65%;
+        max-width: 65%;
+        -webkit-box-shadow: 16px 16px 10px 0px rgba(39,39,46,1);
+        -moz-box-shadow: 16px 16px 10px 0px rgba(39,39,46,1);
+        box-shadow: 16px 16px 10px 0px rgba(39,39,46,1);
+    }
+</style>

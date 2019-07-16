@@ -36,7 +36,7 @@ namespace BlueBadge.MVC.Controllers
             if (service.CreateShop(model))
             {
                 TempData["SaveResult"] = "Shop added.";
-                return RedirectToAction("Index");
+                return RedirectToAction("Create","Artist");
             }
             ModelState.AddModelError("", "Shop could not be added.");
             return View(model);
