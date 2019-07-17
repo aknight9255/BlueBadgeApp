@@ -17,7 +17,7 @@
     </div>
 
     <div class="card-body">
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Create", "Post", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 

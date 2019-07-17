@@ -67,6 +67,7 @@ namespace BlueBadgeServices
                                     ArtistID = e.ArtistID,
                                     Artist = e.Artist,
                                     Files = e.Files,
+                                    //^ this was added****************
                                 });
                 return query.ToArray();
             }
@@ -89,7 +90,7 @@ namespace BlueBadgeServices
                         Artist = entity.Artist,
                         TattooDetails = entity.TattooDetails,
                         Files = entity.Files,
-                        PhotoId = entity.Files.ToList()[0].PhotoId
+                        PhotoId = (entity.Files.Count > 0) ? entity.Files.ToList()[0].PhotoId : 0
                     };
             }
         }
@@ -97,6 +98,9 @@ namespace BlueBadgeServices
         {
             using (var ctx = new ApplicationDbContext())
             {
+                var entity =
+                ctx.Posts.Single
+                (e => e.PostID == model.PostID && e.OwnerID == _userID);
                 if (model.Upload != null && model.Upload.ContentLength > 0)
                 {
                     if (model.Files.Any(f => f.FileType == FileType.Picture))
@@ -116,15 +120,15 @@ namespace BlueBadgeServices
                         avatar.Content = reader.ReadBytes(model.Upload.ContentLength);
                     }
                     model.Files = new List<Photo> { avatar };
+
+                    entity.Files = model.Files;
+                    entity.Upload = model.Upload;
                 }
-                var entity =
-                ctx.Posts.Single
-                (e => e.PostID == model.PostID && e.OwnerID == _userID);
+
                 entity.Title = model.Title;
                 entity.ArtistID = model.ArtistID;
                 entity.TattooDetails = model.TattooDetails;
-                entity.Files = model.Files;
-                entity.Upload = model.Upload;
+
                 return ctx.SaveChanges() >= 1;
             }
         }

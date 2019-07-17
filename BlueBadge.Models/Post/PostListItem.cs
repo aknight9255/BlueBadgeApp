@@ -19,8 +19,6 @@ namespace BlueBadge.Models
         public int ArtistID { get; set; }
         public virtual Artist Artist { get; set; }
 
-        [NotMapped]
-        public HttpPostedFileBase Upload { get; set; }
         [ForeignKey("Photo")]
         public int PhotoId { get; set; }
         public virtual ICollection<Photo> Files { get; set; }

@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Tattoo Archive</h2>
+
 
 
 @if (TempData.ContainsKey("SaveResult"))
@@ -18,41 +18,66 @@
     </div>
 }
 
+<div class="container" style="text-align:center; border: 5px outset white; background-color:rgba(255, 255, 255, 0.15);">
 
-
-@foreach (var item in Model)
-{
-    <ul class="list-unstyled" style="text-align:center;">
-
-        <li class="media">
-            @if (item.Files.Any(ff => ff.FileType == BlueBadge.Data.FileType.Picture))
-            {
-                <img src="~/File?id=@item.Files.First(f => f.FileType == BlueBadge.Data.FileType.Picture).PhotoId" alt="avatar" class="mr-5"/>
-            }
-            else
-            {
-                <img src="~/Content/assets/NOPHOTO.jpg" class="mr-5"/>
-            }
-        <div class="media-body">
-            <h5 class="mt-0 mb-1"> @Html.DisplayFor(modelItem => item.Title) </h5>
-
-            @Html.ActionLink("Edit", "Edit", new { id = item.PostID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.PostID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.PostID })
+    <div class="row">
+        <div class="col">
+            <h2 style="margin: 1em 1em;padding:.5em;">Tattoo Library</h2>
         </div>
-        </li>
-      
-    </ul>
-<hr style="background-color:white;"/>
-}
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <p>@Html.ActionLink("Artist Library", "Index", "Artist", routeValues: null, htmlAttributes: new { @class = "btn btn-light" })</p>
+        </div>
+
+        <div class="col">
+            <p>@Html.ActionLink("Shop Library", "Index", "Shop", routeValues: null, htmlAttributes: new { @class = "btn btn-light" })</p>
+        </div>
+    </div>
+
+    <div class="row " style="border: solid white; margin: 1em 1em;">
+        <div class="col" style="margin: 1em;">
+            @foreach (var item in Model)
+            {
+
+            <div class="card mb-3" style="max-width:540px; margin: auto auto;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        @if (item.Files.Any(ff => ff.FileType == BlueBadge.Data.FileType.Picture))
+                        {
+                            <img src="~/File?id=@item.Files.First(f => f.FileType == BlueBadge.Data.FileType.Picture).PhotoId" alt="avatar" class="card-img" />
+                        }
+                        else
+                        {
+                            <img src="~/Content/assets/NOPHOTO.jpg" class="card-img" />
+                        }
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body" style="color: #076776;">
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+                            <p style="padding:2em 0 0 0;">
+                                @Html.ActionLink("Edit", "Edit", new { id = item.PostID }, new { @class = "btn btn-info" }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.PostID }, new { @class = "btn btn-info" }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.PostID }, new { @class = "btn btn-info"})
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+
+        </div>
+    </div>
+
+</div>
 
 <style>
-    img {
+    /*img {
         max-height: 15%;
         max-width: 15%;
-        -webkit-box-shadow: 16px 16px 10px 0px rgba(39,39,46,1);
-        -moz-box-shadow: 16px 16px 10px 0px rgba(39,39,46,1);
-        box-shadow: 16px 16px 10px 0px rgba(39,39,46,1);
-    }
+    }*/
+   
+
 </style>
 

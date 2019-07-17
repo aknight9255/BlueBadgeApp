@@ -79,6 +79,8 @@ namespace BlueBadge.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, PostEdit model)
         {
+            var db = new ArtistService();
+            ViewBag.ArtistID = new SelectList(db.GetArtists().ToList(), "ArtistID", "ArtistName",model.ArtistID);
             var service = CreatePostService();
             var detail = service.GetPostbyID(id);
             var modelPrevious =
@@ -88,9 +90,10 @@ namespace BlueBadge.MVC.Controllers
                 };
 
             model.Files = modelPrevious.Files;
+            model.PhotoId = detail.PhotoId;
 
             if (!ModelState.IsValid) return View(model);
-            if(model.PostID != id)
+            if (model.PostID != id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);
@@ -101,9 +104,7 @@ namespace BlueBadge.MVC.Controllers
                 TempData["SaveResult"] = "The post was updated.";
                 return RedirectToAction("Index");
             }
-            ModelState.AddModelError("", "The note could not be updated");
-            var db = new ArtistService();
-            ViewBag.ArtistID = new SelectList(db.GetArtists().ToList(), "ArtistID", "ArtistName",model.ArtistID);
+            ModelState.AddModelError("", "The post could not be saved. Either no changes were made or fields have been filled out incorrectly.");
 
             return View(model);
         }
