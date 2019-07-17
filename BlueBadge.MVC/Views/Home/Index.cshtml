@@ -3,7 +3,7 @@
     ViewBag.Title = "Home Page";
 }
 <div class="jumbotron" style="background-image: url(../../Content/assets/homepageTitle2.jpg); background-size:auto; margin: 6% 2%;">
-    <h1 style="color: #076776; text-align:center; padding: .5em 1em 2em 1em;">Welcome to TatTrack!</h1>
+    <h1 style="color: #F88379; text-align:center; padding: .5em 1em 2em 1em;">Welcome to TatTrack!</h1>
     @if (!Request.IsAuthenticated)
     {
         <div class="container">
@@ -49,6 +49,14 @@
     </div>
 
 </div>
+
+<style>
+    h1 {
+        font-family: 'Fredericka the Great', cursive;
+        font-size: 4.5em;
+        text-shadow: #F88379 2px 2px 6px;
+    }
+</style>
 
 
 

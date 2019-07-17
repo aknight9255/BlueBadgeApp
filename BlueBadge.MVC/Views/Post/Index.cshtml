@@ -4,11 +4,9 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Posts</h2>
+<h2>Tattoo Archive</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 @if (TempData.ContainsKey("SaveResult"))
 {
     <div class="alert alert-success fade in" role="alert">
@@ -19,32 +17,42 @@
         @TempData["SaveResult"]
     </div>
 }
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Artist.ArtistName)
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Artist.ArtistName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new {  id=item.PostID  }) |
-                @Html.ActionLink("Details", "Details", new { id=item.PostID  }) |
-                @Html.ActionLink("Delete", "Delete", new {  id=item.PostID  })
-            </td>
-        </tr>
+
+
+@foreach (var item in Model)
+{
+    <ul class="list-unstyled" style="text-align:center;">
+
+        <li class="media">
+            @if (item.Files.Any(ff => ff.FileType == BlueBadge.Data.FileType.Picture))
+            {
+                <img src="~/File?id=@item.Files.First(f => f.FileType == BlueBadge.Data.FileType.Picture).PhotoId" alt="avatar" class="mr-5"/>
+            }
+            else
+            {
+                <img src="~/Content/assets/NOPHOTO.jpg" class="mr-5"/>
+            }
+        <div class="media-body">
+            <h5 class="mt-0 mb-1"> @Html.DisplayFor(modelItem => item.Title) </h5>
+
+            @Html.ActionLink("Edit", "Edit", new { id = item.PostID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.PostID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.PostID })
+        </div>
+        </li>
+      
+    </ul>
+<hr style="background-color:white;"/>
+}
+
+<style>
+    img {
+        max-height: 15%;
+        max-width: 15%;
+        -webkit-box-shadow: 16px 16px 10px 0px rgba(39,39,46,1);
+        -moz-box-shadow: 16px 16px 10px 0px rgba(39,39,46,1);
+        box-shadow: 16px 16px 10px 0px rgba(39,39,46,1);
     }
+</style>
 
-</table>

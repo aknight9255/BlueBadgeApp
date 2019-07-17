@@ -202,6 +202,7 @@
   <ItemGroup>
     <Content Include="Content\assets\homepageTitle2.jpg" />
     <Content Include="Content\assets\Layoutbackground.jfif" />
+    <Content Include="Content\assets\NOPHOTO.jpg" />
     <Content Include="Content\assets\TAT1.jpg" />
     <Content Include="Content\assets\TAT2.jpg" />
     <Content Include="Content\bootstrap-grid.css" />

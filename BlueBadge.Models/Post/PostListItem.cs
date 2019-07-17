@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace BlueBadge.Models
 {
@@ -17,5 +18,11 @@ namespace BlueBadge.Models
         [Display(Name = "Artist")]
         public int ArtistID { get; set; }
         public virtual Artist Artist { get; set; }
+
+        [NotMapped]
+        public HttpPostedFileBase Upload { get; set; }
+        [ForeignKey("Photo")]
+        public int PhotoId { get; set; }
+        public virtual ICollection<Photo> Files { get; set; }
     }
 }

@@ -65,7 +65,8 @@ namespace BlueBadgeServices
                                     PostID = e.PostID,
                                     Title = e.Title,
                                     ArtistID = e.ArtistID,
-                                    Artist = e.Artist
+                                    Artist = e.Artist,
+                                    Files = e.Files,
                                 });
                 return query.ToArray();
             }
