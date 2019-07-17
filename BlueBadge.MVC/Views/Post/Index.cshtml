@@ -43,7 +43,7 @@
 
             <div class="card mb-3" style="max-width:540px; margin: auto auto;">
                 <div class="row no-gutters">
-                    <div class="col-md-4">
+                    <div class="col">
                         @if (item.Files.Any(ff => ff.FileType == BlueBadge.Data.FileType.Picture))
                         {
                             <img src="~/File?id=@item.Files.First(f => f.FileType == BlueBadge.Data.FileType.Picture).PhotoId" alt="avatar" class="card-img" />
@@ -73,10 +73,9 @@
 </div>
 
 <style>
-    /*img {
-        max-height: 15%;
-        max-width: 15%;
-    }*/
+    img {
+        height: 200px; 
+    }
    
 
 </style>
