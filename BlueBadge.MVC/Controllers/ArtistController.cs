@@ -47,6 +47,8 @@ namespace BlueBadge.MVC.Controllers
         //GET DETAILS
         public ActionResult Details(int id)
         {
+            var db = new ShopService();
+            ViewBag.ShopID = new SelectList(db.GetShops().ToList(), "ShopID", "ShopName");
             var svc = new ArtistService();
             var model = svc.GetArtistByID(id);
             return View(model);

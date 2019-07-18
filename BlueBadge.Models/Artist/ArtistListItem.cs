@@ -15,7 +15,7 @@ namespace BlueBadge.Models
         [Display(Name ="Artist Name")]
         public string ArtistName { get; set; }
         [Display(Name = "Phone Number")]
-        public string PhoneNumber { get; set; }
+        public string ArtistContact { get; set; }
         [Display(Name = "Artist Website")]
         public string ArtistURL { get; set; }
 

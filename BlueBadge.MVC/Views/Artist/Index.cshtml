@@ -22,7 +22,7 @@
             @Html.DisplayNameFor(model => model.ArtistName)
         </th>
         <th>
-            Shop
+            @Html.DisplayNameFor(model => model.ArtistContact)
         </th>
         <th></th>
     </tr>
@@ -34,7 +34,7 @@
                 @Html.DisplayFor(modelItem => item.ArtistName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Shop.ShopName)
+                @Html.DisplayFor(modelItem => item.ArtistContact)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.ArtistID }) |
