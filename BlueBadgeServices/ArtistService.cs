@@ -16,10 +16,9 @@ namespace BlueBadgeServices
                 new Artist()
                 {
                     ArtistName = model.ArtistName,
-                    ArtistURL = model.ArtistURL,
                     ShopID = model.ShopID,
                     Shop = model.Shop,
-                    PhoneNumber = model.PhoneNumber
+                    ArtistContact = model.ArtistContact
                 };
             using(var ctx = new ApplicationDbContext())
             {
@@ -37,7 +36,9 @@ namespace BlueBadgeServices
                             new ArtistListItem
                             {
                                 ArtistID = e.ArtistID,
-                                ArtistName = e.ArtistName
+                                ArtistName = e.ArtistName,
+                                ShopID = e.ShopID,
+                                ArtistContact = e.ArtistContact
                             }); 
                 return query.ToArray();
             }
@@ -54,11 +55,9 @@ namespace BlueBadgeServices
                     new ArtistDetails
                     {
                         ArtistID = entity.ArtistID,
-                        ArtistName = entity.ArtistName,
-                        PhoneNumber = entity.PhoneNumber,
+                        ArtistContact= entity.ArtistContact,
                         ShopID = entity.ShopID,
                         Shop = entity.Shop,
-                        ArtistURL = entity.ArtistURL
                     };
             }
         }
@@ -70,10 +69,9 @@ namespace BlueBadgeServices
                     ctx.Artists.Single
                     (e => e.ArtistID == model.ArtistID);
                 entity.ArtistName = model.ArtistName;
-                entity.PhoneNumber = model.PhoneNumber;
+                entity.ArtistContact = model.ArtistContact;
                 entity.ShopID = model.ShopID;
                 entity.Shop = model.Shop;
-                entity.ArtistURL = model.ArtistURL;
                 return ctx.SaveChanges() == 1;
             }
         }

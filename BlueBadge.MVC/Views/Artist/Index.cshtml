@@ -4,11 +4,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Tattoo Artists</h2>
+<h2>Artist Library</h2>
 
-<p>
-    @Html.ActionLink("Add New Artist", "Create")
-</p>
 @if (TempData.ContainsKey("SaveResult"))
 {
     <div class="alert alert-success fade in" role="alert">
@@ -19,24 +16,30 @@
         @TempData["SaveResult"]
     </div>
 }
-<table class="table">
+<table class="table" style="background-color:rgba(255, 255, 255, 0.84); border: solid white;">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ArtistName)
+        </th>
+        <th>
+            Shop
         </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
+        <tr style="border: solid white;">
             <td>
                 @Html.DisplayFor(modelItem => item.ArtistName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ArtistID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.ArtistID}) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.ArtistID })
+                @Html.DisplayFor(modelItem => item.Shop.ShopName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ArtistID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ArtistID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ArtistID })
             </td>
         </tr>
     }

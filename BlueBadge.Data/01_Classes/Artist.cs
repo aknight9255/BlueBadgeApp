@@ -16,7 +16,7 @@ namespace BlueBadge.Data
         [Display(Name = "Artist Name")]
         public string ArtistName { get; set; }
         [Required]
-        public string PhoneNumber { get; set; }
+        public string ArtistContact { get; set; }
         [ForeignKey("Shop")]
         public int ShopID { get; set; }
         public virtual Shop Shop { get; set; }

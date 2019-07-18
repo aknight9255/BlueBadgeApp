@@ -61,8 +61,7 @@ namespace BlueBadge.MVC.Controllers
                 {
                     ArtistID = detail.ArtistID,
                     ArtistName = detail.ArtistName,
-                    PhoneNumber = detail.PhoneNumber,
-                    ArtistURL = detail.ArtistURL,
+                    ArtistContact = detail.ArtistContact,
                     ShopID = detail.ShopID
                 };
             var db = new ShopService();
