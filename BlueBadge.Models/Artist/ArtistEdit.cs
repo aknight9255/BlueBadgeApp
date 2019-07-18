@@ -1,6 +1,7 @@
 ﻿using BlueBadge.Data;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace BlueBadge.Models
     {
         public int ArtistID { get; set; }
         public string ArtistName { get; set; }
+        [Display(Name = "Contact Info")]
         public string ArtistContact { get; set; }
 
         [ForeignKey("Shop")]

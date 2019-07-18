@@ -14,6 +14,7 @@ namespace BlueBadge.Models
         [Required]
         public string ArtistName { get; set; }
         [Required]
+        [Display(Name = "Contact Info")]
         public string ArtistContact { get; set; }
 
         [Required]
