@@ -55,9 +55,11 @@ namespace BlueBadgeServices
                     new ArtistDetails
                     {
                         ArtistID = entity.ArtistID,
+                        ArtistName = entity.ArtistName,
                         ArtistContact= entity.ArtistContact,
                         ShopID = entity.ShopID,
                         Shop = entity.Shop,
+                        
                     };
             }
         }
