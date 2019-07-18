@@ -14,9 +14,8 @@ namespace BlueBadge.Models
         [Required]
         public string ArtistName { get; set; }
         [Required]
-        public string PhoneNumber { get; set; }
-        [Required]
-        public string ArtistURL { get; set; }
+        public string ArtistContact { get; set; }
+
         [Required]
         [ForeignKey("Shop")]
         public int ShopID { get; set; }
