@@ -67,6 +67,10 @@
     <Compile Include="Migrations\201907181512322_ArtistTableUpdate.Designer.cs">
       <DependentUpon>201907181512322_ArtistTableUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907191341198_datalayer changed.cs" />
+    <Compile Include="Migrations\201907191341198_datalayer changed.Designer.cs">
+      <DependentUpon>201907191341198_datalayer changed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="01_Classes\Shop.cs" />
@@ -81,6 +85,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907181512322_ArtistTableUpdate.resx">
       <DependentUpon>201907181512322_ArtistTableUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907191341198_datalayer changed.resx">
+      <DependentUpon>201907191341198_datalayer changed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
