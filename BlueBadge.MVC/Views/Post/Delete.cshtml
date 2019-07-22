@@ -4,18 +4,22 @@
     ViewBag.Title = "Delete";
 }
 
-<h3 style="text-align: center">Are you sure you want to delete this post?</h3>
-<h3 style="text-align: center">This cannot be undone once you hit the delete button below.</h3>
+<div class="jumbotron" style="background-color:#d92929;">
+    <p class="lead">
+        <h3 style="text-align: center">Are you sure you want to delete this Artist?</h3>
+        <h3 style="text-align: center">This cannot be undone once you hit the delete button below.</h3>
+       
+    </p>
 
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-actions no-color" style="text-align: center; padding: 1em 1em;">
-        <input type="submit" value="Delete" class="btn btn-danger btn-lg" />
-    </div>
-}
+        <div class="form-actions no-color" style="text-align: center; padding: 1em 1em;">
+            <input type="submit" value="Delete" class="btn btn-warning btn-lg" />
+        </div>
+    }
+</div>
 
 
 

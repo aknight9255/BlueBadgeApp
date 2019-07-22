@@ -3,7 +3,7 @@ namespace BlueBadge.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initialafterdrop : DbMigration
+    public partial class migrations : DbMigration
     {
         public override void Up()
         {
@@ -13,9 +13,8 @@ namespace BlueBadge.Data.Migrations
                     {
                         ArtistID = c.Int(nullable: false, identity: true),
                         ArtistName = c.String(nullable: false),
-                        PhoneNumber = c.String(nullable: false),
+                        ArtistContact = c.String(nullable: false),
                         ShopID = c.Int(nullable: false),
-                        ArtistURL = c.String(),
                     })
                 .PrimaryKey(t => t.ArtistID)
                 .ForeignKey("dbo.Shop", t => t.ShopID, cascadeDelete: true)

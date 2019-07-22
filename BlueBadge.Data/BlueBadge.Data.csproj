@@ -59,17 +59,9 @@
     <Compile Include="01_Classes\Photo.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="01_Classes\Post.cs" />
-    <Compile Include="Migrations\201907081906276_initialafterdrop.cs" />
-    <Compile Include="Migrations\201907081906276_initialafterdrop.Designer.cs">
-      <DependentUpon>201907081906276_initialafterdrop.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907181512322_ArtistTableUpdate.cs" />
-    <Compile Include="Migrations\201907181512322_ArtistTableUpdate.Designer.cs">
-      <DependentUpon>201907181512322_ArtistTableUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907191341198_datalayer changed.cs" />
-    <Compile Include="Migrations\201907191341198_datalayer changed.Designer.cs">
-      <DependentUpon>201907191341198_datalayer changed.cs</DependentUpon>
+    <Compile Include="Migrations\201907191412159_migrations.cs" />
+    <Compile Include="Migrations\201907191412159_migrations.Designer.cs">
+      <DependentUpon>201907191412159_migrations.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,14 +72,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201907081906276_initialafterdrop.resx">
-      <DependentUpon>201907081906276_initialafterdrop.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907181512322_ArtistTableUpdate.resx">
-      <DependentUpon>201907181512322_ArtistTableUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907191341198_datalayer changed.resx">
-      <DependentUpon>201907191341198_datalayer changed.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907191412159_migrations.resx">
+      <DependentUpon>201907191412159_migrations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
