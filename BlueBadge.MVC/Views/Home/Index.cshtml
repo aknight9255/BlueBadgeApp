@@ -2,24 +2,37 @@
 @{
     ViewBag.Title = "Home Page";
 }
-<div class="jumbotron" style="background-image: url(../../Content/assets/homepageTitle2.jpg); background-size:auto; margin: 6% 2%;">
-    <h1 style="color: #F88379; text-align:center; padding: .5em 1em 2em 1em;">Welcome to TatTrack!</h1>
-    @if (!Request.IsAuthenticated)
-    {
-        <div class="container">
-            <div class="row">
-                <div class="col" style="text-align:center">
-                    @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-info" })
-                </div>
-                <div class="col" style="text-align:center">
-                    @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-info" })
+    <div class="jumbotron" style="background-image: url(../../Content/assets/homepageTitle2.jpg); background-size:auto; margin: 6% 2% 0% 2%;">
+        <h1 style="color: #F88379; text-align:center; padding: .5em 1em 1em 1em;">Welcome to TatTrack!</h1>
+        @if (!Request.IsAuthenticated)
+        {
+            <div class="container">
+                <div class="row">
+                    <div class="col" style="text-align:center">
+                        @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-info" })
+                    </div>
+                    <div class="col" style="text-align:center">
+                        @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-info" })
+                    </div>
                 </div>
             </div>
-        </div>
-    }
-</div>
+        }
+        else
+        {
+            <div class="container" style="color:#076776;padding:0;margin:0;">
+                <div class="row">
+                    <div class="col" style="text-align:center; border: 5px solid white; margin: 5px; background-color:rgba(255, 255, 255, 0.80)">
+                        <p>Thank you for signing up with TatTrack! Click "Track New Tat" above to start you tattoo archive! </p>
+                    </div>
+                    <div class="col" style="text-align:center; border: 5px solid white; margin: 5px; background-color:rgba(255, 255, 255, 0.80)">
+                        <p>If you have already added a tattoo to your archive click "Tracked Tats" above to see your archive!</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 
-<h2 style="text-align:center;">History of Tattoos</h2>
+<h2 style="text-align:center; padding: .5em 0em .5em 0em;">History of Tattoos</h2>
 
 <div class="card-deck">
 

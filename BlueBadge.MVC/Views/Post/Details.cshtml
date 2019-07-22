@@ -4,70 +4,48 @@
     ViewBag.Title = "Details";
 }
 
-<div class="container" style="margin: 1em 0 0 0;">
-    <div class="row">
-        <div class="col">
+<h2 style="text-align: center;">@Html.DisplayFor(model => model.Title)</h2>
+<div class="container" style="background-color:rgba(255, 255, 255, 0.15); border: 5px outset white;">
+    <div class="row" style="margin: 1.5em 0 0 0;">
+
+        <div class="col" style="text-align:center;">
             @if (Model.Files.Any(ff => ff.FileType == BlueBadge.Data.FileType.Picture))
             {
-                <p>
-                    <img src="~/File?id=@Model.Files.First(f => f.FileType == BlueBadge.Data.FileType.Picture).PhotoId" alt="avatar" />
-                </p>
+                <img src="~/File?id=@Model.Files.First(f => f.FileType == BlueBadge.Data.FileType.Picture).PhotoId" />
             }
             else
             {
                 <img src="~/Content/assets/NOPHOTO.jpg" />
             }
         </div>
-
-        <div class="col"style="margin: auto auto;">
-            <dl class="dl-horizontal" >
-                <dt>
-                    @Html.DisplayNameFor(model => model.Title)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Title)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Artist.ArtistName)
-                </dt>
-
-                <dd>
+        <div class="col" style="margin: auto auto; text-align: center;">
+            <div style="border: 5px outset white; margin:3em 1em;">
+                <h4 style="text-decoration: underline">This tattoo was created by</h4>
+                <p>
                     @Html.DisplayFor(model => model.Artist.ArtistName)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.TattooDetails)
-                </dt>
-
-                <dd>
+                </p>
+            </div>
+            <div style="border: 5px outset white; margin:auto auto; margin:3em 1em;">
+                <h4 style="text-decoration: underline">Details</h4>
+                <p>
                     @Html.DisplayFor(model => model.TattooDetails)
-                </dd>
-
-            </dl>
+                </p>
+            </div>
         </div>
-
     </div>
-</div>
 
-<p style="text-align:right;">
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PostID },  htmlAttributes: new { @class = "btn btn-light" }) |
-    @Html.ActionLink("Back to List", "Index", routeValues: null, htmlAttributes: new { @class = "btn btn-light" })
-</p>
+    <p style="text-align:right;">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.PostID }, htmlAttributes: new { @class = "btn btn-light" }) |
+        @Html.ActionLink("Back to List", "Index", routeValues: null, htmlAttributes: new { @class = "btn btn-light" })
+    </p>
+</div>
 
 <style>
     img {
-        max-height: 65%;
-        max-width: 65%;
+        height: 350px;
+        width: 350px;
         -webkit-box-shadow: 16px 16px 10px 0px rgba(39,39,46,1);
         -moz-box-shadow: 16px 16px 10px 0px rgba(39,39,46,1);
         box-shadow: 16px 16px 10px 0px rgba(39,39,46,1);
-    }
-    dt {
-       font-size: 2em;
-    }
-    dd {
-        border-bottom: solid white;
     }
 </style>
